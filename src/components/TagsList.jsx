@@ -1,18 +1,7 @@
-const TagsList = ({ items, setItems }) => {
-	const categories = items.reduce(
-		(listCategories, item) => {
-			if (!listCategories.includes(item.category)) {
-				listCategories.push(item.category);
-			}
-			return listCategories;
-		},
-		["all"]
-	);
+import { getCategories, filterItems } from "../utils/itemsUtils";
 
-	const filterItems = (items, category) => {
-		if (category === "all") return items;
-		return items.filter((item) => item.category === category);
-	};
+const TagsList = ({ items, setItems }) => {
+	const categories = getCategories(items);
 
 	return (
 		<ul className="tags-list">
